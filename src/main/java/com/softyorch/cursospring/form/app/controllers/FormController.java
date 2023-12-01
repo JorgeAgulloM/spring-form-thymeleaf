@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FormController {
@@ -17,17 +16,7 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String input(
-            Model model,
-            @RequestParam(name = "username") String username,
-            @RequestParam(name = "password") String password,
-            @RequestParam(name = "email") String email
-    ) {
-
-        UserDefault user = new UserDefault();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
+    public String input(UserDefault user, Model model) {
 
         model.addAttribute("title", "Resultado");
         model.addAttribute("user", user);
