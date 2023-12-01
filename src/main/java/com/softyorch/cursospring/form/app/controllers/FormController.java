@@ -1,5 +1,6 @@
 package com.softyorch.cursospring.form.app.controllers;
 
+import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +24,13 @@ public class FormController {
             @RequestParam(name = "email") String email
     ) {
 
+        UserDefault user = new UserDefault();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+
         model.addAttribute("title", "Resultado");
-        model.addAttribute("username", username);
-        model.addAttribute("password", password);
-        model.addAttribute("email", email);
+        model.addAttribute("user", user);
 
         return "result";
     }
