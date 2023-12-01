@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 @Controller
 public class FormController {
 
@@ -30,16 +26,6 @@ public class FormController {
         model.addAttribute("title", "Resultado");
 
         if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-
-            result.getFieldErrors().forEach(err ->
-                    errors.put(
-                            err.getField(),
-                            "El campo "
-                                    .concat(err.getField()).concat(" ")
-                                    .concat(Objects.requireNonNull(err.getDefaultMessage())))
-            );
-            model.addAttribute("error", errors);
 
             return "form";
         }
