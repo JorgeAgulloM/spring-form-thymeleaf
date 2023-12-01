@@ -1,8 +1,14 @@
 package com.softyorch.cursospring.form.app.models.domain;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class UserDefault {
+
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String email;
 
     public String getUsername() {
