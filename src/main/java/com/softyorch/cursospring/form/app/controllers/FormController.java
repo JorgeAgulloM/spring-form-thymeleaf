@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
@@ -19,12 +20,12 @@ public class FormController {
     public String form(Model model) {
         UserDefault user = new UserDefault();
         model.addAttribute("title", "Formulario");
-        model.addAttribute("userDefault", user);
+        model.addAttribute("user", user);
         return "form";
     }
 
     @PostMapping("/form")
-    public String input(@Valid UserDefault user, BindingResult result, Model model) {
+    public String input(@Valid @ModelAttribute("user") UserDefault user, BindingResult result, Model model) {
 
         model.addAttribute("title", "Resultado");
 
