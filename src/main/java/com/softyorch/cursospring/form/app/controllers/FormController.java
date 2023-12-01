@@ -8,8 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
+@SessionAttributes("user")
 public class FormController {
 
     @GetMapping({"/form", "/"})
@@ -24,7 +27,12 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String input(@Valid @ModelAttribute("user") UserDefault user, BindingResult result, Model model) {
+    public String input(
+            @Valid @ModelAttribute("user") UserDefault user,
+            BindingResult result,
+            Model model,
+            SessionStatus status
+    ) {
 
         model.addAttribute("title", "Resultado");
 
@@ -34,6 +42,7 @@ public class FormController {
         }
 
         model.addAttribute("user", user);
+        status.setComplete();
 
         return "result";
     }
