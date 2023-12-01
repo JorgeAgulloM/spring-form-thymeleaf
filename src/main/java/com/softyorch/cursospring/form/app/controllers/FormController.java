@@ -15,6 +15,9 @@ public class FormController {
     @GetMapping({"/form", "/"})
     public String form(Model model) {
         UserDefault user = new UserDefault();
+        user.setId("123.456.789-K");
+        user.setName("john");
+        user.setSurname("Connor");
         model.addAttribute("title", "Formulario");
         model.addAttribute("user", user);
         return "form";
