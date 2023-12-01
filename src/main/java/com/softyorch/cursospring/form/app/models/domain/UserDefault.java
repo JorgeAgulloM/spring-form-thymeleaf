@@ -1,19 +1,25 @@
 package com.softyorch.cursospring.form.app.models.domain;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class UserDefault {
 
     private String id;
-    @NotEmpty
+    @NotEmpty()
+    @Size(min = 3, max = 20)
     private String username;
     @NotEmpty
+    @Size(min = 3, max = 50)
     private String name;
     @NotEmpty
+    @Size(min = 3, max = 50)
     private String surname;
     @NotEmpty
     private String password;
     @NotEmpty
+    @Email
     private String email;
 
     public String getId() { return id; }
