@@ -15,13 +15,13 @@ public class UserDefaultValidation implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        UserDefault user = (UserDefault) target;
+        //UserDefault user = (UserDefault) target;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty.userDefault.username");
 
-        if (!user.getId().matches("[0-9]{2}[.,][\\d]{3}[.,][\\d]{3}[-][A-Z]{1}")) {
+        /*if (!user.getId().matches("[0-9]{2}[.,][\\d]{3}[.,][\\d]{3}[-][A-Z]{1}")) {
             errors.rejectValue("id", "Pattern.userDefault.id");
-        }
+        }*/
 
     }
 }

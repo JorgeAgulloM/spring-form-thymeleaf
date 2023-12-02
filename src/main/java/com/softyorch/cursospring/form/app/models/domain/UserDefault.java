@@ -1,5 +1,6 @@
 package com.softyorch.cursospring.form.app.models.domain;
 
+import com.softyorch.cursospring.form.app.validation.IdRegex;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -7,6 +8,7 @@ import jakarta.validation.constraints.Size;
 public class UserDefault {
 
     //@Pattern(regexp = "[0-9]{2}[.,][\\d]{3}[.,][\\d]{3}[-][A-Z]{1}")
+    @IdRegex
     private String id;
     //@NotEmpty
     //@Size(min = 3, max = 20)
