@@ -2,9 +2,7 @@ package com.softyorch.cursospring.form.app.models.domain;
 
 import com.softyorch.cursospring.form.app.validation.IdRegex;
 import com.softyorch.cursospring.form.app.validation.Required;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class UserDefault {
 
@@ -26,6 +24,11 @@ public class UserDefault {
     @Required
     @Email
     private String email;
+
+    @Min(5)
+    @Max(5000)
+    @NotNull
+    private Integer count;
 
     public String getId() { return id; }
 
@@ -68,4 +71,8 @@ public class UserDefault {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Integer getCount() { return count; }
+
+    public void setCount(Integer count) { this.count = count; }
 }

@@ -50,6 +50,13 @@
             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
         </div>
         <div>
+            <label for="count">Cuenta</label>
+            <div>
+                <input type="number" id="count" th:field="*{count}">
+            </div>
+            <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"></div>
+        </div>
+        <div>
             <div>
                 <input type="submit" value="Enviar">
             </div>
