@@ -1,5 +1,6 @@
 package com.softyorch.cursospring.form.app.controllers;
 
+import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
@@ -31,6 +32,9 @@ public class FormController {
         format.setLenient(false); //Tolerancia a la hora de reconocer los formatos introducidos. En true seria muy estricto.
         binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false)); // forma global
         //binder.registerCustomEditor(Date.class, "bornDate", new CustomDateEditor(format, false)); //Forma expecífica para el campo
+
+        binder.registerCustomEditor(String.class, "name", new NameUppercaseEditor()); //específico
+
     }
 
     @GetMapping({"/form", "/"})
