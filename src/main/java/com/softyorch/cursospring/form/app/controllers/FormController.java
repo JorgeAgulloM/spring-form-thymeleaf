@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
-@SessionAttributes("user")
+@SessionAttributes("userDefault")
 public class FormController {
 
     @Autowired
@@ -44,12 +42,26 @@ public class FormController {
         return Arrays.asList("España", "United Kingdom", "Francia", "Canadá", "Italia");
     }
 
+    @ModelAttribute("countriesMap")
+    public Map<String, String> countriesMap() {
+        Map<String, String> countries = new HashMap<>();
+        countries.put("ES", "España");
+        countries.put("UK", "United Kingdom");
+        countries.put("FR", "Francia");
+        countries.put("CD", "Canadá");
+        countries.put("IT", "Italia");
+
+        return countries;
+    }
+
     @GetMapping({"/form", "/"})
     public String form(Model model) {
         UserDefault user = new UserDefault();
         user.setId("12.345.678-K");
         user.setName("john");
         user.setSurname("Connor");
+        user.setEmail("john@connor.com");
+        user.setCount(6);
         model.addAttribute("title", "Formulario");
         model.addAttribute("user", user);
         return "form";
