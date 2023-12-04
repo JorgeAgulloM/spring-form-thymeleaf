@@ -29,7 +29,8 @@ public class FormController {
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         format.setLenient(false); //Tolerancia a la hora de reconocer los formatos introducidos. En true seria muy estricto.
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false)); // forma global
+        //binder.registerCustomEditor(Date.class, "bornDate", new CustomDateEditor(format, false)); //Forma expecífica para el campo
     }
 
     @GetMapping({"/form", "/"})
