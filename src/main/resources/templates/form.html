@@ -57,6 +57,13 @@
             <div th:if="${#fields.hasErrors('count')}" th:errors="*{count}"></div>
         </div>
         <div>
+            <label for="bornDate">Fecha de nacimiento</label>
+            <div>
+                <input type="text" id="bornDate" th:field="*{bornDate}" placeholder="yyyy/MM/dd">
+            </div>
+            <div th:if="${#fields.hasErrors('bornDate')}" th:errors="*{bornDate}"></div>
+        </div>
+        <div>
             <div>
                 <input type="submit" value="Enviar">
             </div>

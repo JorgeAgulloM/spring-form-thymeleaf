@@ -3,6 +3,9 @@ package com.softyorch.cursospring.form.app.models.domain;
 import com.softyorch.cursospring.form.app.validation.IdRegex;
 import com.softyorch.cursospring.form.app.validation.Required;
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class UserDefault {
 
@@ -29,6 +32,10 @@ public class UserDefault {
     @Max(5000)
     @NotNull
     private Integer count;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Date bornDate;
 
     public String getId() { return id; }
 
@@ -75,4 +82,8 @@ public class UserDefault {
     public Integer getCount() { return count; }
 
     public void setCount(Integer count) { this.count = count; }
+
+    public Date getBornDate() { return bornDate; }
+
+    public void setBornDate(Date bornDate) { this.bornDate = bornDate; }
 }
