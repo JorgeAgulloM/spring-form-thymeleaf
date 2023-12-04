@@ -1,5 +1,6 @@
 package com.softyorch.cursospring.form.app.controllers;
 
+import com.softyorch.cursospring.form.app.editors.CountryPropertyEditor;
 import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
 import com.softyorch.cursospring.form.app.models.domain.Country;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
@@ -28,6 +29,9 @@ public class FormController {
     @Autowired
     private ICountryService countryService;
 
+    @Autowired
+    private CountryPropertyEditor countryEditor;
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         //binder.setValidator(validator); //Usando este método solo validará aquello que esté en la clase validadora, y no lo que se implemente en la entity.
@@ -40,6 +44,7 @@ public class FormController {
 
         binder.registerCustomEditor(String.class, "name", new NameUppercaseEditor()); //específico
 
+        binder.registerCustomEditor(Country.class, "country", countryEditor); //específico
     }
 
     @ModelAttribute("countryList")

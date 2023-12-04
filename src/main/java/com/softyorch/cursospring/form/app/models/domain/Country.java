@@ -1,12 +1,9 @@
 package com.softyorch.cursospring.form.app.models.domain;
 
-import jakarta.validation.constraints.NotEmpty;
-
 public class Country {
 
     //@NotNull
     private Integer id;
-    @NotEmpty
     private String code;
     private String name;
 

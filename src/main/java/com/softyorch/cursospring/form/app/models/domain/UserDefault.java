@@ -39,7 +39,8 @@ public class UserDefault {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
 
-    @Valid
+    //@Valid
+    @NotNull
     private Country country;
 
     public String getId() { return id; }
