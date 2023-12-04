@@ -34,7 +34,9 @@ public class UserDefault {
     private Integer count;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    @Past
+    //@Future
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
 
     public String getId() { return id; }
