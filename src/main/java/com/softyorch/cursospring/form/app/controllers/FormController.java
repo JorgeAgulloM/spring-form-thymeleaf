@@ -4,12 +4,16 @@ import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @SessionAttributes("user")
@@ -22,6 +26,10 @@ public class FormController {
     public void initBinder(WebDataBinder binder) {
         //binder.setValidator(validator); //Usando este método solo validará aquello que esté en la clase validadora, y no lo que se implemente en la entity.
         binder.addValidators(validator); //Usando este método añade la clase validadora a la validación implementada en la entity.
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        format.setLenient(false); //Tolerancia a la hora de reconocer los formatos introducidos. En true seria muy estricto.
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(format, false));
     }
 
     @GetMapping({"/form", "/"})

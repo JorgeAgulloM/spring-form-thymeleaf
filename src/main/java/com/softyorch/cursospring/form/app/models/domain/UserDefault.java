@@ -3,7 +3,6 @@ package com.softyorch.cursospring.form.app.models.domain;
 import com.softyorch.cursospring.form.app.validation.IdRegex;
 import com.softyorch.cursospring.form.app.validation.Required;
 import jakarta.validation.constraints.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -36,7 +35,7 @@ public class UserDefault {
     @NotNull
     @Past
     //@Future
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
 
     public String getId() { return id; }
