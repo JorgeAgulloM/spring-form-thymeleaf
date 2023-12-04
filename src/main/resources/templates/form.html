@@ -64,14 +64,14 @@
             <div th:if="${#fields.hasErrors('bornDate')}" th:errors="*{bornDate}"></div>
         </div>
         <div>
-            <label for="country">country</label>
+            <label for="country.code">country</label>
             <div>
-                <select id="country" th:field="*{country}">
+                <select id="country.code" th:field="*{country.code}">
                     <option value="">-- Selecionar --</option>
-                    <option th:each="country: ${countriesMap.entrySet()}" th:text="${country.value}" th:value="${country.key}"></option>
+                    <option th:each="country: ${countryList}" th:text="${country.name}" th:value="${country.code}"></option>
                 </select>
             </div>
-            <div th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></div>
+            <div th:if="${#fields.hasErrors('country.code')}" th:errors="*{country.code}"></div>
         </div>
         <div>
             <div>

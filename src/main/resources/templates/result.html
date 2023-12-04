@@ -16,7 +16,7 @@
         <li th:text="${user.count}"></li>
         <!--<li th:text="${#dates.format(user.bornDate, 'dd/MM/yyyy')}"></li>-->
         <li th:text="${#calendars.format(user.bornDate, 'dd/MM/yyyy')}"></li>
-        <li th:text="${user.country}"></li>
+        <li th:text="${user.country.code}"></li>
     </ul>
 
 </body>

@@ -1,6 +1,7 @@
 package com.softyorch.cursospring.form.app.controllers;
 
 import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
+import com.softyorch.cursospring.form.app.models.domain.Country;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
@@ -37,13 +38,24 @@ public class FormController {
 
     }
 
+    @ModelAttribute("countryList")
+    public List<Country> countryList() {
+        return Arrays.asList(
+                new Country(1, "ES", "España"),
+                new Country(2, "UK", "United Kingdom"),
+                new Country(3, "FR", "Francia"),
+                new Country(4, "CD", "Canadá"),
+                new Country(5, "IT", "Italia")
+        );
+    }
+
     @ModelAttribute("countries")
     public List<String> countries() {
         return Arrays.asList("España", "United Kingdom", "Francia", "Canadá", "Italia");
     }
 
     @ModelAttribute("countriesMap")
-    public Map<String, String> countriesMap() {
+    public Map<String, String> countryMap() {
         Map<String, String> countries = new HashMap<>();
         countries.put("ES", "España");
         countries.put("UK", "United Kingdom");

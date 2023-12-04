@@ -2,6 +2,7 @@ package com.softyorch.cursospring.form.app.models.domain;
 
 import com.softyorch.cursospring.form.app.validation.IdRegex;
 import com.softyorch.cursospring.form.app.validation.Required;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.util.Date;
@@ -38,8 +39,8 @@ public class UserDefault {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
 
-    @NotEmpty
-    private String country;
+    @Valid
+    private Country country;
 
     public String getId() { return id; }
 
@@ -91,8 +92,8 @@ public class UserDefault {
 
     public void setBornDate(Date bornDate) { this.bornDate = bornDate; }
 
-    public String getCountry() { return country; }
+    public Country getCountry() { return country; }
 
-    public void setCountry(String country) { this.country = country; }
+    public void setCountry(Country country) { this.country = country; }
 
 }
