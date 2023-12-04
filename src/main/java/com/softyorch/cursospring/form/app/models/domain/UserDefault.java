@@ -38,6 +38,9 @@ public class UserDefault {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
 
+    @NotEmpty
+    private String country;
+
     public String getId() { return id; }
 
     public void setId(String id) { this.id = id; }
@@ -87,4 +90,9 @@ public class UserDefault {
     public Date getBornDate() { return bornDate; }
 
     public void setBornDate(Date bornDate) { this.bornDate = bornDate; }
+
+    public String getCountry() { return country; }
+
+    public void setCountry(String country) { this.country = country; }
+
 }

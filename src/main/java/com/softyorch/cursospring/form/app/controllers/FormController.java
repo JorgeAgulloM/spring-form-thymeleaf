@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @SessionAttributes("user")
@@ -37,10 +39,15 @@ public class FormController {
 
     }
 
+    @ModelAttribute("countries")
+    public List<String> countries() {
+        return Arrays.asList("España", "United Kingdom", "Francia", "Canadá", "Italia");
+    }
+
     @GetMapping({"/form", "/"})
     public String form(Model model) {
         UserDefault user = new UserDefault();
-        user.setId("123.456.789-K");
+        user.setId("12.345.678-K");
         user.setName("john");
         user.setSurname("Connor");
         model.addAttribute("title", "Formulario");
