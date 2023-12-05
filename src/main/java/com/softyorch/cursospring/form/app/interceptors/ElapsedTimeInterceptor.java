@@ -41,6 +41,10 @@ public class ElapsedTimeInterceptor implements HandlerInterceptor {
         Thread.sleep(delay);
 
         return true;
+
+        //En caso de que falle alguna validación y evitar que se invoque el método invocado.
+        //response.sendRedirect(request.getContextPath().concat("/loggin"));
+        //return false;
     }
 
     @Override
