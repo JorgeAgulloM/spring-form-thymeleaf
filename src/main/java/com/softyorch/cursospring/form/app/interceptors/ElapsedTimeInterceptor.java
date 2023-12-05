@@ -52,7 +52,7 @@ public class ElapsedTimeInterceptor implements HandlerInterceptor {
         }
 
         log.info("[ElapsedTimeInterceptor] Elapsed time: " + timeElapsed + " milliseconds");
-        log.info("[ElapsedTimeInterceptor] preHandler() exiting...");
+        log.info("[ElapsedTimeInterceptor] postHandler() exiting...");
 
     }
 }
