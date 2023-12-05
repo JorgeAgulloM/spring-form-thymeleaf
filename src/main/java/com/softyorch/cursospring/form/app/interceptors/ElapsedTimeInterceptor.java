@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +26,11 @@ public class ElapsedTimeInterceptor implements HandlerInterceptor {
     ) throws Exception {
 
         log.info("[ElapsedTimeInterceptor] preHandler() entry...");
+
+        if (handler instanceof HandlerMethod method) {
+            log.info("[ElapsedTimeInterceptor] Intercepted handle name: " + method.getMethod().getName());
+        }
+
         long timeStart = System.currentTimeMillis();
         request.setAttribute(TIME_START, timeStart);
 
@@ -47,7 +53,7 @@ public class ElapsedTimeInterceptor implements HandlerInterceptor {
         long timeStart = (long) request.getAttribute(TIME_START);
         long timeElapsed = timeEnd - timeStart;
 
-        if (modelAndView != null) {
+        if (handler instanceof HandlerMethod && modelAndView != null) {
             modelAndView.addObject(TIME_ELAPSED, timeElapsed);
         }
 
