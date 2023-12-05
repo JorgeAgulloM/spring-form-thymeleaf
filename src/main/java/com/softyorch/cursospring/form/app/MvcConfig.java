@@ -14,8 +14,13 @@ public class MvcConfig implements WebMvcConfigurer {
     @Qualifier(value = "elapsedTimeInterceptor")
     private HandlerInterceptor elapsedTimeInterceptor;
 
+    @Autowired()
+    @Qualifier(value = "openingTimes")
+    private HandlerInterceptor openingTimes;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(elapsedTimeInterceptor).addPathPatterns("/form/**");
+        registry.addInterceptor(openingTimes).addPathPatterns("/**").excludePathPatterns("/closed");
     }
 }

@@ -11,6 +11,7 @@ import com.softyorch.cursospring.form.app.services.IRoleService;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,12 @@ import java.util.*;
 @Controller
 @SessionAttributes("userDefault")
 public class FormController {
+
+    @Value("${config.time.opening}")
+    private int opening;
+
+    @Value("${config.time.closed}")
+    private int closed;
 
     @Autowired
     private UserDefaultValidation validator;
@@ -151,5 +158,17 @@ public class FormController {
         return "result";
     }
 
+    @GetMapping("/closed")
+    public String closed(Model model) {
+        StringBuilder message = new StringBuilder("Cerrado, por favor visítenos desde las ");
+        message.append(opening);
+        message.append(" hrs. y las ");
+        message.append(closed);
+        message.append(" hrs. Gracias.");
+        model.addAttribute("title", "Fuera del horario de atención al cliente.");
+        model.addAttribute("message", message);
+
+        return "closed";
+    }
 
 }
