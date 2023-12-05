@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserDefault {
 
@@ -42,6 +43,9 @@ public class UserDefault {
     //@Valid
     @NotNull
     private Country country;
+
+    @NotEmpty
+    private List<String> roles;
 
     public String getId() { return id; }
 
@@ -97,4 +101,7 @@ public class UserDefault {
 
     public void setCountry(Country country) { this.country = country; }
 
+    public List<String> getRoles() { return roles; }
+
+    public void setRoles(List<String> roles) { this.roles = roles; }
 }
