@@ -126,22 +126,26 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String input(
-            @Valid @ModelAttribute("user") UserDefault user,
-            BindingResult result,
+    public String input(@Valid UserDefault user, BindingResult result, Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("title", "Resultado form");
+            return "form";
+        }
+
+        return "redirect:/show";
+    }
+
+    @GetMapping("/show")
+    public String show(
+            @SessionAttribute(name = "userDefault", required = false) UserDefault user,
             Model model,
             SessionStatus status
     ) {
 
-        //validation.validate(user, result);
+        if (user == null) return "redirect:/form";
 
         model.addAttribute("title", "Resultado");
-
-        if (result.hasErrors()) {
-
-            return "form";
-        }
-
         model.addAttribute("user", user);
         status.setComplete();
 
