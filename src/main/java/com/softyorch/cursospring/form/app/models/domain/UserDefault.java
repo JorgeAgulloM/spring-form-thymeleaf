@@ -47,6 +47,8 @@ public class UserDefault {
     @NotEmpty
     private List<Role> roles;
 
+    private Boolean enabled;
+
     public String getId() { return id; }
 
     public void setId(String id) { this.id = id; }
@@ -104,4 +106,8 @@ public class UserDefault {
     public List<Role> getRoles() { return roles; }
 
     public void setRoles(List<Role> roles) { this.roles = roles; }
+
+    public Boolean getEnabled() { return enabled; }
+
+    public void setEnabled(Boolean enabled) { this.enabled = enabled; }
 }

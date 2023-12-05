@@ -82,6 +82,12 @@
             <div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
         </div>
         <div>
+            <label for="enabled">Habilitar</label>
+            <div>
+                <input id="enabled" type="checkbox" th:field="*{enabled}">
+            </div>
+        </div>
+        <div>
             <div>
                 <input type="submit" value="Enviar">
             </div>

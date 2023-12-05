@@ -111,6 +111,7 @@ public class FormController {
         user.setSurname("Connor");
         user.setEmail("john@connor.com");
         user.setCount(6);
+        user.setEnabled(true);
         model.addAttribute("title", "Formulario");
         model.addAttribute("user", user);
         return "form";
