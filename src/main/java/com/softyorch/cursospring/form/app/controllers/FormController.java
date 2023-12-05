@@ -121,7 +121,7 @@ public class FormController {
         user.setEnabled(true);
         user.setSecretValue("MySecretValue1234");
         model.addAttribute("title", "Formulario");
-        model.addAttribute("user", user);
+        model.addAttribute("userDefault", user);
         return "form";
     }
 
@@ -146,7 +146,6 @@ public class FormController {
         if (user == null) return "redirect:/form";
 
         model.addAttribute("title", "Resultado");
-        model.addAttribute("user", user);
         status.setComplete();
 
         return "result";
