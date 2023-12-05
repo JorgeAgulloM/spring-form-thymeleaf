@@ -89,14 +89,11 @@
         </div>
         <div>
             <label>Género</label>
-            <div>
-                <input id="gender" type="radio" th:field="*{gender}" value="Hombre">
-                <label for="gender">Hombre</label>
+            <div th:each="gen: ${genderList}">
+                <input type="radio" th:field="*{gender}" th:value="${gen}">
+                <label th:for="${#ids.prev('gender')}" th:text="${gen}"></label>
             </div>
-            <div>
-                <input id="gender2" type="radio" th:field="*{gender}" value="Mujer">
-                <label for="gender2">Mujer</label>
-            </div>
+            <div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
         </div>
         <div>
             <div>
