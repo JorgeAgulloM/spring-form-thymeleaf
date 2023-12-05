@@ -117,6 +117,7 @@ public class FormController {
         user.setEmail("john@connor.com");
         user.setCount(6);
         user.setCountry(new Country(1, "ES", "España"));
+        user.setRoles(List.of(new Role(2, "Usuario", "ROLE_USER"), new Role(3, "Moderador", "ROLE_MODERATOR")));
         user.setEnabled(true);
         user.setSecretValue("MySecretValue1234");
         model.addAttribute("title", "Formulario");

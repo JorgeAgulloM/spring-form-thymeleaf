@@ -1,5 +1,7 @@
 package com.softyorch.cursospring.form.app.models.domain;
 
+import java.util.Objects;
+
 public class Role {
 
     private Integer id;
@@ -36,5 +38,18 @@ public class Role {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Role role1 = (Role) obj;
+        return Objects.equals(id, role1.id) && Objects.equals(name, role1.name) && Objects.equals(role, role1.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, role);
     }
 }
