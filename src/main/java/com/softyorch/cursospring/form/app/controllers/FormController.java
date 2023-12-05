@@ -2,6 +2,7 @@ package com.softyorch.cursospring.form.app.controllers;
 
 import com.softyorch.cursospring.form.app.editors.CountryPropertyEditor;
 import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
+import com.softyorch.cursospring.form.app.editors.RoleEditor;
 import com.softyorch.cursospring.form.app.models.domain.Country;
 import com.softyorch.cursospring.form.app.models.domain.Role;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
@@ -32,7 +33,13 @@ public class FormController {
     private ICountryService countryService;
 
     @Autowired
+    private IRoleService roleService;
+
+    @Autowired
     private CountryPropertyEditor countryEditor;
+
+    @Autowired
+    private RoleEditor roleEditor;
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -47,6 +54,8 @@ public class FormController {
         binder.registerCustomEditor(String.class, "name", new NameUppercaseEditor()); //específico
 
         binder.registerCustomEditor(Country.class, "country", countryEditor); //específico
+
+        binder.registerCustomEditor(Role.class, "roles", roleEditor);
     }
 
     @ModelAttribute("roleList")
@@ -65,6 +74,11 @@ public class FormController {
         roles.put("ROLE_USER", "Usuario");
         roles.put("ROLE_MODERATOR", "Moderador");
         return roles;
+    }
+
+    @ModelAttribute("roleListEntity")
+    public List<Role> roleListEntity() {
+        return roleService.list();
     }
 
     @ModelAttribute("countryList")

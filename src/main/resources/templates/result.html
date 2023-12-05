@@ -22,7 +22,7 @@
     </ul>
     <div>Roles</div>
     <ul>
-        <li th:each="role: ${user.roles}" th:text="${role}"></li>
+        <li th:each="role: ${user.roles}" th:text="${role.name}"></li>
     </ul>
 
 </body>
