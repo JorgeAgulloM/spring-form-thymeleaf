@@ -2,7 +2,6 @@ package com.softyorch.cursospring.form.app.models.domain;
 
 import com.softyorch.cursospring.form.app.validation.IdRegex;
 import com.softyorch.cursospring.form.app.validation.Required;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.util.Date;
@@ -28,26 +27,23 @@ public class UserDefault {
     @Required
     @Email
     private String email;
-
     @Min(5)
     @Max(5000)
     @NotNull
     private Integer count;
-
     @NotNull
     @Past
     //@Future
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
-
     //@Valid
     @NotNull
     private Country country;
-
     @NotEmpty
     private List<Role> roles;
-
     private Boolean enabled;
+    @NotEmpty
+    private String gender;
 
     public String getId() { return id; }
 
@@ -110,4 +106,8 @@ public class UserDefault {
     public Boolean getEnabled() { return enabled; }
 
     public void setEnabled(Boolean enabled) { this.enabled = enabled; }
+
+    public String getGender() { return gender; }
+
+    public void setGender(String gender) { this.gender = gender; }
 }
