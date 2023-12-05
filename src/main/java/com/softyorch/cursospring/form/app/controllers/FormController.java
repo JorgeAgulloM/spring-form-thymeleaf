@@ -117,6 +117,7 @@ public class FormController {
         user.setEmail("john@connor.com");
         user.setCount(6);
         user.setEnabled(true);
+        user.setSecretValue("MySecretValue1234");
         model.addAttribute("title", "Formulario");
         model.addAttribute("user", user);
         return "form";
