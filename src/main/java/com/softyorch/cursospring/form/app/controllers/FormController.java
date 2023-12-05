@@ -3,8 +3,10 @@ package com.softyorch.cursospring.form.app.controllers;
 import com.softyorch.cursospring.form.app.editors.CountryPropertyEditor;
 import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
 import com.softyorch.cursospring.form.app.models.domain.Country;
+import com.softyorch.cursospring.form.app.models.domain.Role;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import com.softyorch.cursospring.form.app.services.ICountryService;
+import com.softyorch.cursospring.form.app.services.IRoleService;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,15 @@ public class FormController {
         roles.add("ROLE_ADMIN");
         roles.add("ROLE_USER");
         roles.add("ROLE_MODERATOR");
+        return roles;
+    }
+
+    @ModelAttribute("rolesMap")
+    public Map<String, String> rolesMap() {
+        Map<String, String> roles = new HashMap<>();
+        roles.put("ROLE_ADMIN", "Administrador");
+        roles.put("ROLE_USER", "Usuario");
+        roles.put("ROLE_MODERATOR", "Moderador");
         return roles;
     }
 
