@@ -3,11 +3,13 @@ package com.softyorch.cursospring.form.app.controllers;
 import com.softyorch.cursospring.form.app.editors.CountryPropertyEditor;
 import com.softyorch.cursospring.form.app.editors.NameUppercaseEditor;
 import com.softyorch.cursospring.form.app.editors.RoleEditor;
+import com.softyorch.cursospring.form.app.errors.UserDefaultNotFoundException;
 import com.softyorch.cursospring.form.app.models.domain.Country;
 import com.softyorch.cursospring.form.app.models.domain.Role;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import com.softyorch.cursospring.form.app.services.ICountryService;
 import com.softyorch.cursospring.form.app.services.IRoleService;
+import com.softyorch.cursospring.form.app.services.IUserDefaultService;
 import com.softyorch.cursospring.form.app.validation.UserDefaultValidation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,9 @@ public class FormController {
 
     @Autowired
     private IRoleService roleService;
+
+    @Autowired
+    private IUserDefaultService userDefaultService;
 
     @Autowired
     private CountryPropertyEditor countryEditor;
@@ -119,16 +124,21 @@ public class FormController {
 
     @GetMapping({"/form", "/"})
     public String form(Model model) {
-        UserDefault user = new UserDefault();
-        user.setId("12.345.678-K");
-        user.setName("john");
-        user.setSurname("Connor");
-        user.setEmail("john@connor.com");
-        user.setCount(6);
-        user.setCountry(new Country(1, "ES", "España"));
-        user.setRoles(List.of(new Role(2, "Usuario", "ROLE_USER"), new Role(3, "Moderador", "ROLE_MODERATOR")));
-        user.setEnabled(true);
-        user.setSecretValue("MySecretValue1234");
+        UserDefault user = new UserDefault(
+                "12.345.678-K",
+                "jonny",
+                "john",
+                "Connor",
+                "12345",
+                "john@connor.com",
+                6,
+                new Date(System.currentTimeMillis() - 1231212),
+                new Country(1, "ES", "España"),
+                List.of(new Role(2, "Usuario", "ROLE_USER"), new Role(3, "Moderador", "ROLE_MODERATOR")),
+                true,
+                "Hombre",
+                "myValue12345"
+        );
         model.addAttribute("title", "Formulario");
         model.addAttribute("userDefault", user);
 
@@ -175,6 +185,22 @@ public class FormController {
         model.addAttribute(MESSAGE, message);
 
         return "closed";
+    }
+
+    @GetMapping("/user/{id}")
+    public String user(@PathVariable Long id, Model model) {
+
+        String idString = id.toString();
+
+        UserDefault userDefault = userDefaultService.getById(idString);
+
+        if (userDefault == null)
+            throw new UserDefaultNotFoundException(id.toString());
+
+        model.addAttribute("userDefault", userDefault);
+        model.addAttribute("title", "Detalle usuario: ".concat(userDefault.getUsername()));
+
+        return "user";
     }
 
 }

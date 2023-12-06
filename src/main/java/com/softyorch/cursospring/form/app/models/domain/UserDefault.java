@@ -46,6 +46,22 @@ public class UserDefault {
     private String gender;
     private String secretValue;
 
+    public UserDefault(String id, String username, String name, String surname, String password, String email, Integer count, Date bornDate, Country country, List<Role> roles, Boolean enabled, String gender, String secretValue) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.count = count;
+        this.bornDate = bornDate;
+        this.country = country;
+        this.roles = roles;
+        this.enabled = enabled;
+        this.gender = gender;
+        this.secretValue = secretValue;
+    }
+
     public String getId() { return id; }
 
     public void setId(String id) { this.id = id; }
