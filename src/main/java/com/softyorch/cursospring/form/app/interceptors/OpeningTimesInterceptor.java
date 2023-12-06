@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class OpeningTimesInterceptor implements HandlerInterceptor {
 
     private static final Logger log = LoggerFactory.getLogger(OpeningTimesInterceptor.class);
-    private static final String MESSAGE = "message";
+    public static final String MESSAGE = "myMessage";
     private static final String GET = "get";
     @Value("${config.time.opening}")
     private int opening;

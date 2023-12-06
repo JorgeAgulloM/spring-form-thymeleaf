@@ -23,6 +23,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static com.softyorch.cursospring.form.app.interceptors.OpeningTimesInterceptor.MESSAGE;
+
 @Controller
 @SessionAttributes("userDefault")
 public class FormController {
@@ -166,7 +168,7 @@ public class FormController {
         message.append(closed);
         message.append(" hrs. Gracias.");
         model.addAttribute("title", "Fuera del horario de atención al cliente.");
-        model.addAttribute("message", message);
+        model.addAttribute(MESSAGE, message);
 
         return "closed";
     }
