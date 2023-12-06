@@ -132,7 +132,8 @@ public class FormController {
         model.addAttribute("title", "Formulario");
         model.addAttribute("userDefault", user);
 
-        int v = 100/0;
+        Integer v = Integer.parseInt("10x");
+        //int v = 100/0; para generar el error de aritmética
 
         return "form";
     }
