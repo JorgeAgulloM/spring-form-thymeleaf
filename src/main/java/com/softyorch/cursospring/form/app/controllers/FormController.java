@@ -131,6 +131,9 @@ public class FormController {
         user.setSecretValue("MySecretValue1234");
         model.addAttribute("title", "Formulario");
         model.addAttribute("userDefault", user);
+
+        int v = 100/0;
+
         return "form";
     }
 
