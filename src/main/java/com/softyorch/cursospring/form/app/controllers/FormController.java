@@ -191,11 +191,16 @@ public class FormController {
     public String user(@PathVariable Long id, Model model) {
 
         String idString = id.toString();
-
+/*
         UserDefault userDefault = userDefaultService.getById(idString);
 
         if (userDefault == null)
             throw new UserDefaultNotFoundException(id.toString());
+*/
+
+        UserDefault userDefault = userDefaultService.getByIdOptional(idString).orElseThrow(() ->
+                new UserDefaultNotFoundException(idString)
+        );
 
         model.addAttribute("userDefault", userDefault);
         model.addAttribute("title", "Detalle usuario: ".concat(userDefault.getUsername()));

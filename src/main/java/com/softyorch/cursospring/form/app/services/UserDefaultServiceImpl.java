@@ -5,10 +5,7 @@ import com.softyorch.cursospring.form.app.models.domain.Role;
 import com.softyorch.cursospring.form.app.models.domain.UserDefault;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserDefaultServiceImpl implements IUserDefaultService {
@@ -43,5 +40,11 @@ public class UserDefaultServiceImpl implements IUserDefaultService {
             }
         }
         return null;
+    }
+
+    @Override
+    public Optional<UserDefault> getByIdOptional(String id) {
+        UserDefault userDefault = this.getById(id);
+        return Optional.ofNullable(userDefault);
     }
 }
